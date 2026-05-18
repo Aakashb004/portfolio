@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aakash B — Full-Stack & AI Engineer</title>
+  <meta name="description" content="Full-Stack & AI Engineer. Oracle AI Certified. IEEE Published. Open to opportunities." />
+  <meta property="og:title" content="Aakash B — Full-Stack & AI Engineer" />
+  <meta property="og:description" content="Final-year B.Tech IT student building real-world web apps, IoT systems, and ML models." />
+  <meta property="og:type" content="website" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Inter:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+    :root { --bg:#0a0a0a; --fg:#f0f0f0; --muted:rgba(255,255,255,0.45); --dim:rgba(255,255,255,0.14); --border:rgba(255,255,255,0.1); }
+    html { scroll-behavior: smooth; }
+    body { background:var(--bg); color:var(--fg); font-family:'Inter',sans-serif; overflow-x:hidden; line-height:1.6; }
+
+    .fade-up { opacity:0; transform:translateY(24px); transition:opacity 0.6s ease,transform 0.6s ease; }
+    .fade-up.visible { opacity:1; transform:translateY(0); }
+
+    /* NAV */
+    nav { display:flex; justify-content:space-between; align-items:center; padding:1.2rem 3rem; border-bottom:0.5px solid var(--border); position:sticky; top:0; background:rgba(10,10,10,0.96); backdrop-filter:blur(14px); z-index:200; }
+    .nav-logo { font-family:'Bebas Neue',sans-serif; font-size:22px; letter-spacing:0.12em; color:var(--fg); text-decoration:none; }
+    .nav-links { display:flex; gap:2rem; list-style:none; }
+    .nav-links a { font-size:11px; font-weight:500; color:var(--muted); text-decoration:none; letter-spacing:0.1em; text-transform:uppercase; transition:color 0.2s; cursor:pointer; }
+    .nav-links a:hover,.nav-links a.active { color:var(--fg); }
+    .nav-actions { display:flex; gap:10px; align-items:center; }
+    .nav-cta { padding:8px 18px; border:0.5px solid rgba(255,255,255,0.3); border-radius:20px; font-size:11px; font-weight:500; color:var(--fg); background:transparent; cursor:pointer; letter-spacing:0.06em; text-decoration:none; transition:background 0.2s,border-color 0.2s; white-space:nowrap; }
+    .nav-cta:hover { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.5); }
+    .nav-cta.filled { background:var(--fg); color:var(--bg); border-color:var(--fg); }
+    .nav-cta.filled:hover { opacity:0.85; }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { display:block; width:22px; height:1.5px; background:var(--fg); transition:all 0.3s; }
+    .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
+    .hamburger.open span:nth-child(2) { opacity:0; }
+    .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    .mobile-nav { display:none; flex-direction:column; position:fixed; top:61px; left:0; right:0; background:rgba(10,10,10,0.98); backdrop-filter:blur(16px); border-bottom:0.5px solid var(--border); z-index:199; padding:1rem 0; transform:translateY(-8px); opacity:0; pointer-events:none; transition:all 0.25s ease; }
+    .mobile-nav.open { transform:translateY(0); opacity:1; pointer-events:all; }
+    .mobile-nav a { padding:0.9rem 2rem; font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; border-bottom:0.5px solid rgba(255,255,255,0.05); transition:color 0.2s; }
+    .mobile-nav a:hover { color:var(--fg); }
+    .mobile-nav-actions { display:flex; gap:10px; padding:1rem 2rem 0; }
+
+    /* HERO */
+    #hero { padding:6rem 3rem 3rem; border-bottom:0.5px solid var(--border); }
+    .hero-grid { display:grid; grid-template-columns:1.2fr 0.8fr; gap:4rem; align-items:center; }
+    .hero-meta { display:flex; justify-content:space-between; align-items:center; margin-bottom:2.5rem; font-family:'DM Mono',monospace; font-size:11px; color:var(--muted); letter-spacing:0.1em; }
+    .hero-title { font-family:'Bebas Neue',sans-serif; font-size:clamp(60px,10vw,110px); line-height:0.9; letter-spacing:0.02em; color:var(--fg); margin-bottom:0.5rem; }
+    .hero-title .dim { color:var(--dim); }
+    .hero-sub-row { display:flex; justify-content:space-between; align-items:flex-end; margin-top:3rem; padding-top:2rem; border-top:0.5px solid var(--border); gap:2rem; }
+    .hero-desc { font-size:14px; color:var(--muted); max-width:400px; line-height:1.9; }
+    .hero-badges { display:flex; flex-direction:column; gap:8px; align-items:flex-end; }
+    .hbadge { font-family:'DM Mono',monospace; font-size:10px; letter-spacing:0.08em; padding:5px 14px; border-radius:20px; border:0.5px solid rgba(255,255,255,0.18); color:var(--muted); }
+    .hbadge.active { border-color:rgba(255,255,255,0.5); color:var(--fg); }
+    .hero-img-wrap { display:flex; justify-content:center; }
+    .hero-profile-img { width:320px; height:420px; object-fit:cover; border-radius:24px; border:1px solid rgba(255,255,255,0.1); }
+
+    /* MARQUEE */
+    .marquee-wrap { padding:1rem 0; border-bottom:0.5px solid var(--border); overflow:hidden; white-space:nowrap; }
+    .marquee-track { display:inline-block; animation:marquee 30s linear infinite; }
+    .marquee-track span { font-family:'Bebas Neue',sans-serif; font-size:13px; letter-spacing:0.18em; color:rgba(255,255,255,0.2); margin:0 2rem; }
+    .marquee-track span.accent { color:rgba(255,255,255,0.65); }
+    @keyframes marquee { 0%{transform:translateX(0);} 100%{transform:translateX(-50%);} }
+
+    /* SECTIONS */
+    section { border-bottom:0.5px solid var(--border); }
+    .sec-header { display:flex; justify-content:space-between; align-items:baseline; padding:2.5rem 3rem 1.8rem; border-bottom:0.5px solid var(--border); }
+    .sec-title { font-family:'Bebas Neue',sans-serif; font-size:38px; letter-spacing:0.05em; color:var(--fg); }
+
+    /* ABOUT / EDUCATION / EXPERIENCE STRUCTURAL LISTS */
+    .edu-list { padding:0 3rem; }
+    .edu-item { display:grid; grid-template-columns:130px 1fr; gap:2rem; padding:2rem 0; border-bottom:0.5px solid rgba(255,255,255,0.07); position:relative; }
+    .edu-item:last-child { border-bottom:none; }
+    .edu-date { font-family:'DM Mono',monospace; font-size:11px; color:rgba(255,255,255,0.28); line-height:1.6; }
+    .edu-role { font-size:15px; font-weight:600; color:var(--fg); margin-bottom:3px; }
+    .edu-org { font-size:12px; color:rgba(255,255,255,0.45); margin-bottom:6px; font-weight:500; }
+
+    .stats-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:1px; background:var(--border); border:0.5px solid var(--border); margin-top:2rem; }
+    .stat-box { background:var(--bg); padding:1.4rem 1.2rem; }
+    .stat-num { font-family:'Bebas Neue',sans-serif; font-size:40px; color:var(--fg); line-height:1; }
+    .stat-lbl { font-family:'DM Mono',monospace; font-size:9px; color:rgba(255,255,255,0.3); letter-spacing:0.1em; margin-top:4px; }
+
+    /* SKILLS */
+    .skills-cols { display:grid; grid-template-columns:repeat(3,1fr); }
+    .scol { padding:2rem 3rem; border-right:0.5px solid var(--border); }
+    .scol:last-child { border-right:none; }
+    .scol-title { font-family:'DM Mono',monospace; font-size:10px; color:rgba(255,255,255,0.28); letter-spacing:0.12em; text-transform:uppercase; margin-bottom:1.2rem; }
+    .scol-tags { display:flex; flex-wrap:wrap; gap:7px; }
+    .stag { font-size:12px; font-weight:500; color:rgba(255,255,255,0.7); padding:5px 11px; border-radius:4px; border:0.5px solid rgba(255,255,255,0.1); background:rgba(255,255,255,0.04); transition:border-color 0.2s,color 0.2s; }
+    .stag:hover { border-color:rgba(255,255,255,0.3); color:var(--fg); }
+
+    /* SERVICES */
+    .svc-grid { display:grid; grid-template-columns:repeat(2,1fr); }
+    .svc { padding:2.5rem 3rem; border-right:0.5px solid var(--border); border-bottom:0.5px solid var(--border); transition:background 0.2s; }
+    .svc:nth-child(2n) { border-right:none; }
+    .svc:nth-last-child(-n+2) { border-bottom:none; }
+    .svc:hover { background:rgba(255,255,255,0.025); }
+    .svc-num { font-family:'DM Mono',monospace; font-size:10px; color:rgba(255,255,255,0.22); margin-bottom:1rem; letter-spacing:0.08em; }
+    .svc-name { font-size:17px; font-weight:600; color:var(--fg); margin-bottom:0.8rem; }
+    .svc-tags { display:flex; flex-wrap:wrap; gap:7px; }
+    .svc-tag { font-family:'DM Mono',monospace; font-size:10px; padding:3px 9px; border-radius:20px; border:0.5px solid rgba(255,255,255,0.13); color:rgba(255,255,255,0.4); }
+
+    /* PROJECTS */
+    .pitem { display:grid; grid-template-columns:50px 1fr; gap:2.5rem; align-items:flex-start; padding:2rem 3rem; border-bottom:0.5px solid rgba(255,255,255,0.07); transition:background 0.2s; }
+    .pitem:last-child { border-bottom:none; }
+    .pitem:hover { background:rgba(255,255,255,0.02); }
+    .pitem-num { font-family:'DM Mono',monospace; font-size:12px; color:rgba(255,255,255,0.22); padding-top:3px; }
+    .pitem-main { display:flex; flex-direction:column; gap:0.5rem; }
+    .pitem-title { font-size:17px; font-weight:600; color:var(--fg); display:flex; align-items:center; gap:8px; }
+    .pitem-desc { font-size:13.5px; color:var(--muted); line-height:1.7; }
+    .pitem-footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-top:0.5rem; }
+    .pitem-links { display:flex; gap:8px; }
+    .plink { font-family:'DM Mono',monospace; font-size:10px; padding:4px 12px; border-radius:20px; border:0.5px solid rgba(255,255,255,0.18); color:rgba(255,255,255,0.55); text-decoration:none; transition:border-color 0.2s,color 0.2s; }
+    .plink:hover { border-color:rgba(255,255,255,0.5); color:var(--fg); }
+    .pitem-tags { display:flex; gap:6px; flex-wrap:wrap; }
+    .ptag { font-family:'DM Mono',monospace; font-size:10px; padding:3px 9px; border-radius:20px; border:0.5px solid rgba(255,255,255,0.13); color:rgba(255,255,255,0.4); }
+    .live-dot { display:inline-block; width:7px; height:7px; border-radius:50%; background:#22c55e; flex-shrink:0; }
+    .metric { display:inline-block; font-family:'DM Mono',monospace; font-size:10px; padding:2px 8px; border-radius:4px; background:rgba(34,197,94,0.09); border:0.5px solid rgba(34,197,94,0.3); color:#4ade80; }
+
+    /* EXPERIENCES */
+    .exp-list { padding:0 3rem; }
+    .exp-item { display:grid; grid-template-columns:160px 1fr; gap:2.5rem; padding:2.5rem 0; border-bottom:0.5px solid rgba(255,255,255,0.07); }
+    .exp-item:last-child { border-bottom:none; }
+    .exp-date { font-family:'DM Mono',monospace; font-size:10px; color:rgba(255,255,255,0.28); line-height:1.7; margin-bottom:8px; }
+    .exp-type { font-family:'DM Mono',monospace; font-size:10px; padding:3px 9px; border-radius:20px; border:0.5px solid rgba(255,255,255,0.13); color:rgba(255,255,255,0.4); display:inline-block; }
+    .exp-role { font-size:16px; font-weight:600; color:var(--fg); margin-bottom:3px; }
+    .exp-org { font-size:13px; color:rgba(255,255,255,0.5); font-weight:500; margin-bottom:0.75rem; }
+    .exp-desc { font-size:13px; color:var(--muted); line-height:1.85; }
+    .exp-tags { display:flex; flex-wrap:wrap; gap:6px; margin-top:1rem; }
+    .exp-tag { font-family:'DM Mono',monospace; font-size:10px; padding:3px 9px; border-radius:4px; border:0.5px solid rgba(255,255,255,0.1); color:rgba(255,255,255,0.4); background:rgba(255,255,255,0.03); }
+
+    /* CERTS */
+    .certs-list { display:grid; grid-template-columns:repeat(2,1fr); }
+    .cert { padding:2rem 3rem; border-right:0.5px solid var(--border); border-bottom:0.5px solid var(--border); }
+    .cert:nth-child(2n) { border-right:none; }
+    .cert:nth-last-child(-n+2) { border-bottom:none; }
+    .cert-issuer { font-family:'DM Mono',monospace; font-size:10px; color:rgba(255,255,255,0.28); letter-spacing:0.1em; margin-bottom:0.5rem; }
+    .cert-name { font-size:14px; font-weight:500; color:var(--fg); line-height:1.5; }
+
+    /* PUBLICATION */
+    .pub-item { padding:2.5rem 3rem; display:flex; gap:3rem; align-items:flex-start; }
+    .pub-label { font-family:'DM Mono',monospace; font-size:11px; color:rgba(255,255,255,0.28); flex-shrink:0; padding-top:3px; letter-spacing:0.08em; line-height:1.8; }
+    .pub-title-txt { font-size:16px; font-weight:600; color:var(--fg); line-height:1.6; margin-bottom:10px; }
+    .pub-meta-txt { font-family:'DM Mono',monospace; font-size:11px; color:rgba(255,255,255,0.35); line-height:1.8; }
+    .pub-link { color:rgba(255,255,255,0.6); text-decoration:none; transition:color 0.2s; }
+    .pub-link:hover { color:var(--fg); }
+
+    /* CONTACT */
+    .contact-header { padding:3rem 3rem 2rem; border-bottom:0.5px solid var(--border); }
+    .contact-big { font-family:'Bebas Neue', sans-serif; font-size:clamp(44px,7vw,80px); color:var(--fg); line-height:0.95; }
+    .contact-sub { font-size:14px; color:var(--muted); margin-top:0.85rem; }
+    .contact-body { display:grid; grid-template-columns:1fr 1fr; }
+    .contact-left { padding:2.5rem 3rem; border-right:0.5px solid var(--border); }
+    .contact-right { padding:2.5rem 3rem; }
+    .contact-label { font-family:'DM Mono',monospace; font-size:10px; color:rgba(255,255,255,0.28); letter-spacing:0.12em; margin-bottom:1.5rem; }
+    .social-list { display:flex; flex-direction:column; }
+    .slink { display:flex; align-items:center; justify-content:space-between; padding:1rem 0; border-bottom:0.5px solid rgba(255,255,255,0.07); text-decoration:none; transition:opacity 0.2s; }
+    .slink:last-child { border-bottom:none; }
+    .slink:hover { opacity:0.65; }
+    .slink-name { font-size:14px; font-weight:500; color:var(--fg); }
+    .slink-right { display:flex; align-items:center; gap:8px; }
+    .slink-handle { font-family:'DM Mono',monospace; font-size:10px; color:rgba(255,255,255,0.3); }
+    .slink-arr { font-size:14px; color:rgba(255,255,255,0.25); }
+    .cform { display:flex; flex-direction:column; gap:12px; }
+    .cform input,.cform textarea { width:100%; padding:12px 16px; background:rgba(255,255,255,0.04); border:0.5px solid rgba(255,255,255,0.12); border-radius:8px; color:var(--fg); font-family:'Inter',sans-serif; font-size:13px; outline:none; transition:border-color 0.2s; }
+    .cform input::placeholder,.cform textarea::placeholder { color:rgba(255,255,255,0.22); }
+    .cform input:focus,.cform textarea:focus { border-color:rgba(255,255,255,0.4); }
+    .cform textarea { min-height:100px; resize: vertical; }
+    .cform-btn { padding:13px 28px; background:var(--fg); color:var(--bg); border:none; border-radius:8px; font-family:'Inter',sans-serif; font-size:13px; font-weight:600; cursor:pointer; width:fit-content; transition:opacity 0.2s; }
+    .cform-btn:hover { opacity:0.85; }
+    .form-success { display:none; font-family:'DM Mono',monospace; font-size:12px; color:#4ade80; padding:12px 16px; border:0.5px solid rgba(34,197,94,0.3); border-radius:8px; background:rgba(34,197,94,0.06); }
+
+    footer { padding:2rem 3rem; display:flex; justify-content:center; align-items:center; border-top:0.5px solid var(--border); }
+    .footer-copy { font-family:'DM Mono',monospace; font-size:11px; color:rgba(255,255,255,0.3); letter-spacing:0.08em; }
+
+    @media (max-width:900px) {
+      nav { padding:1rem 1.5rem; }
+      .nav-links { display:none; }
+      .nav-actions .nav-cta:first-child { display:none; }
+      .hamburger { display:flex; }
+      .mobile-nav { display:flex; }
+      #hero { padding:4rem 1.5rem 2rem; }
+      .hero-grid { grid-template-columns:1fr !important; gap:2rem; }
+      .hero-sub-row { flex-direction:column; align-items:flex-start; gap:1.5rem; }
+      .hero-badges { align-items:flex-start; }
+      .sec-header { padding:2rem 1.5rem 1.2rem; }
+      .stats-grid { grid-template-columns:1fr 1fr; }
+      .skills-cols { grid-template-columns:1fr; }
+      .scol { padding:1.5rem; border-right:none; border-bottom:0.5px solid var(--border); }
+      .scol:last-child { border-bottom:none; }
+      .svc-grid { grid-template-columns:1fr; }
+      .svc { border-right:none; padding:2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
+      .svc:last-child { border-bottom: none; }
+      .pitem { grid-template-columns:30px 1fr; padding:1.5rem; gap:1rem; }
+      .pitem-footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
+      .certs-list { grid-template-columns:1fr; }
+      .cert { padding:1.5rem; border-right:none; }
+      .pub-item { padding:2rem 1.5rem; flex-direction:column; gap:1rem; }
+      .exp-list,.edu-list { padding:0 1.5rem; }
+      .exp-item { grid-template-columns:1fr; gap:0.5rem; }
+      .contact-header { padding:2rem 1.5rem; }
+      .contact-body { grid-template-columns:1fr; }
+      .contact-left { border-right:none; border-bottom:0.5px solid var(--border); padding:2rem 1.5rem; }
+      .contact-right { padding:2rem 1.5rem; }
+      footer { padding:1.5rem; text-align:center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="#hero">AAKASH B</a>
+  <ul class="nav-links" id="navLinks"></ul>
+  <div class="nav-actions">
+    <a class="nav-cta" href="resume.pdf" download>Download CV</a>
+    <a class="nav-cta filled" href="mailto:aakashb0494@gmail.com">Hire Me</a>
+    <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mobile-nav" id="mobileNav"></div>
+
+<section id="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-meta mt-1 fade-up"><span>/ FULL-STACK &amp; AI ENGINEER</span></div>
+      <div class="hero-title">AAKASH<br><span class="dim">BUILDING</span><br>REAL<span class="dim">-WORLD</span></div>
+      <div class="hero-sub-row">
+        <p class="hero-desc">B.Tech Information Technology student at Kalasalingam University. Oracle Cloud AI Certified and IEEE-published researcher specializing in full-stack engineering, production web apps, and intelligent IoT systems.</p>
+        <div class="hero-badges" id="heroBadges"></div>
+      </div>
+    </div>
+    <div class="hero-img-wrap fade-up">
+      <img src="profile.jpeg" alt="Aakash B" class="hero-profile-img" />
+    </div>
+  </div>
+</section>
+
+<div class="marquee-wrap" aria-hidden="true"><div class="marquee-track" id="marqueeTrack"></div></div>
+
+<section id="about">
+  <div class="sec-header fade-up"><span class="sec-title">About</span></div>
+  <div class="edu-list">
+    <div class="edu-item fade-up">
+      <div class="edu-date">WHO I AM</div>
+      <div>
+        <div class="edu-role">Hey! I'm Aakash.</div>
+        <div class="edu-desc">
+          I build products that live at the intersection of Full-Stack development and Applied AI. Whether it's deploying IoT safety systems or optimizing ML classifiers, I'm obsessed with the 'shipping' culture. With an Oracle AI certification and a background in IT, I spend my time turning complex technical challenges into clean, scalable, and production-ready applications.
+        </div>
+        <div class="stats-grid" id="statsGrid"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="sec-header fade-up"><span class="sec-title">Skills</span></div>
+  <div class="skills-cols" id="skillsCols"></div>
+</section>
+
+<section id="services">
+  <div class="sec-header fade-up"><span class="sec-title">What I Do</span></div>
+  <div class="svc-grid" id="svcGrid"></div>
+</section>
+
+<section id="projects">
+  <div class="sec-header fade-up"><span class="sec-title">Projects</span></div>
+  <div id="plist"></div>
+</section>
+
+<section id="experience">
+  <div class="sec-header fade-up"><span class="sec-title">Experience</span></div>
+  <div class="exp-list" id="expList"></div>
+</section>
+
+<section id="certs">
+  <div class="sec-header fade-up"><span class="sec-title">Certifications</span></div>
+  <div class="certs-list" id="certsList"></div>
+</section>
+
+<section id="publication">
+  <div class="sec-header fade-up"><span class="sec-title">Publication</span></div>
+  <div id="pubList"></div>
+</section>
+
+<section id="education">
+  <div class="sec-header fade-up"><span class="sec-title">Education</span></div>
+  <div class="edu-list" id="eduList"></div>
+</section>
+
+<section id="contact" style="border-bottom:none;">
+  <div class="contact-header fade-up">
+    <div class="contact-big">LET'S BUILD<br>SOMETHING.</div>
+    <div class="contact-sub">Have a project or opportunity? Reach out — let's talk.</div>
+  </div>
+  <div class="contact-body">
+    <div class="contact-left fade-up">
+      <div class="contact-label">/ Find Me On</div>
+      <div class="social-list" id="socialList"></div>
+    </div>
+    <div class="contact-right fade-up">
+      <div class="contact-label">/ Send a Message</div>
+      <form class="cform" id="contactForm" action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="YOUR_WEB3FORMS_KEY" />
+        <input type="text"  name="name"    placeholder="Your name" required />
+        <input type="email" name="email"   placeholder="your@email.com" required />
+        <input type="text"  name="subject" placeholder="Subject / project idea" />
+        <textarea           name="message" placeholder="Tell me more..."></textarea>
+        <button type="submit" class="cform-btn">Send message</button>
+        <div class="form-success" id="formSuccess">✓ Message sent! I'll get back to you soon.</div>
+      </form>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© · DEVELOPED BY AAKASH B · ALL RIGHTS RESERVED</span>
+</footer>
+
+<script>
+const DATA = {
+  badges: [
+    { label:"ORACLE AI CERTIFIED", active:true  },
+    { label:"IEEE PUBLISHED · 2025", active:false },
+    { label:"OPEN TO WORK",          active:false },
+  ],
+  marquee: [
+    {label:"REACT",         accent:true },
+    {label:"BUN.JS",        accent:false},
+    {label:"FLUTTER",       accent:true },
+    {label:"PYTHON",        accent:false},
+    {label:"MONGODB",       accent:true },
+    {label:"ARDUINO",       accent:false},
+    {label:"FASTAPI",       accent:true },
+    {label:"SCIKIT-LEARN",  accent:false},
+    {label:"GENERATIVE AI", accent:true },
+    {label:"JAVA",          accent:false},
+    {label:"VERCEL",        accent:true },
+    {label:"GIT",           accent:false},
+    {label:"POSTMAN",       accent:true },
+    {label:"DART",          accent:false},
+  ],
+  stats: [
+    {num:"5+", label:"PROJECTS SHIPPED"},
+    {num:"2",  label:"ORACLE CERTS"    },
+    {num:"1",  label:"IEEE PUBLICATION"},
+    {num:"5+", label:"LANGUAGES"       },
+  ],
+  skills: [
+    {
+      category: "Languages",
+      tags: ["Python","Java","C","JavaScript","Dart","HTML / CSS"],
+    },
+    {
+      category: "Full-Stack & Tools",
+      tags: ["React","Bun.js","MongoDB","FastAPI","REST APIs","Git / GitHub","Postman","Vercel","Chrome Extension APIs"],
+    },
+    {
+      category: "AI / IoT / Mobile",
+      tags: ["Scikit-learn","Pandas","Generative AI","Text Classification","Flutter","Arduino","Sensor Integration"],
+    },
+  ],
+  services: [
+    {name:"Full-Stack Development",  tags:["React","Bun.js","MongoDB","REST APIs","FastAPI"]},
+    {name:"AI / ML Engineering",     tags:["Classification","Scikit-learn","Generative AI","Oracle AI"]},
+    {name:"IoT & Embedded Systems",  tags:["Arduino","Sensor Integration","Real-time Data","WiFi Transmission"]},
+    {name:"Mobile App Development",  tags:["Flutter","Dart","Cross-platform"]},
+  ],
+  projects: [
+    {
+      title:"Stockfy", live:true,
+      desc:"Full-stack stock maintenance platform with admin/user portals, real-time inventory updates, purchase tracking, and authentication — deployed to production.",
+      metric:"↑ Live in production",
+      tags:["React","Bun.js","MongoDB","Vercel"],
+      liveUrl:"https://stockfy-ruddy.vercel.app/",
+      githubUrl:"https://github.com/Aakashb004",
+    },
+    {
+      title:"Drowsiness Detection System", live:false,
+      desc:"IoT driver fatigue detection using Arduino Uno, OV7670 camera, and PIR sensor — triggers real-time audio alerts with WiFi-based remote monitoring in under 2 seconds.",
+      metric:"< 2s alert response time",
+      tags:["Arduino","IoT","C","WiFi"],
+      liveUrl:"",
+      githubUrl:"https://github.com/Aakashb004",
+    },
+    {
+      title:"Fake News Detection", live:false,
+      desc:"Fake news classifier using TF-IDF vectorisation and Logistic Regression, achieving 94%+ accuracy on real-world news datasets with robust Pandas preprocessing pipelines.",
+      metric:"94%+ accuracy",
+      tags:["Python","Scikit-learn","Pandas","NLP"],
+      liveUrl:"",
+      githubUrl:"https://github.com/Aakashb004",
+    },
+    {
+      title:"Two Player Competitive Game", live:true,
+      desc:"Flutter-based real-time competitive game with dual-player gameplay, live score tracking, and a smooth cross-platform UI — deployed and accessible on the web.",
+      metric:"↑ Live in production",
+      tags:["Flutter","Dart","Vercel"],
+      liveUrl:"https://twoplayapp.vercel.app/",
+      githubUrl:"https://github.com/Aakashb004",
+    },
+    {
+      title:"SMS Spam Detection System", live:false,
+      desc:"NLP pipeline to classify and filter spam SMS messages from legitimate texts using supervised ML classifiers — built during the Microsoft & SAP TechSaksham internship.",
+      metric:"Microsoft & SAP TechSaksham",
+      tags:["Python","NLP","Scikit-learn"],
+      liveUrl:"",
+      githubUrl:"https://github.com/Aakashb004",
+    },
+  ],
+  experience: [
+    {
+      date:"Dec 2024 – Jan 2025 · Remote",
+      type:"Internship",
+      role:"AI: Transformative Learning with TechSaksham",
+      org:"Edunet Foundation · Microsoft & SAP CSR Initiative",
+      desc:"Completed a structured AI & NLP internship under Microsoft and SAP's joint CSR initiative. Gained hands-on experience in Artificial Intelligence and Natural Language Processing. Built an <strong style='color:rgba(255,255,255,0.8)'>SMS Spam Detection System</strong> — classifying and filtering spam messages from legitimate SMS texts with high accuracy.",
+      tags:["Python","NLP","Scikit-learn","Text Classification","Microsoft TechSaksham"],
+    },
+  ],
+  certifications: [
+    {issuer:"ORACLE",        name:"Cloud Infrastructure AI Certified Foundations Associate"},
+    {issuer:"ORACLE",        name:"Generative AI Certified Professional"},
+    {issuer:"POSTMAN",       name:"API Fundamentals Student Expert"},
+    {issuer:"GREAT LEARNING",name:"Java Programming · UI/UX for Beginners · Intro to AI"},
+  ],
+  publications: [
+    {
+      label:"IEEE\nITIKD\n2025",
+      title:'"Shake-to-Alert: An Automated Mobile Safety Application for Women with Emergency Notification via Motion Detection"',
+      meta:"IEEE ITIKD 2025 · DOI: 10.1109/11005309",
+      url:"https://ieeexplore.ieee.org/document/11005309",
+      urlLabel:"View on IEEE Xplore ↗",
+    },
+  ],
+  education: [
+    {
+      date:"2022 – Present",
+      role:"B.Tech — Information Technology",
+      org:"Kalasalingam Academy of Research and Education"
+    },
+    {
+      date:"2016 – 2022",
+      role:"Higher Secondary Education",
+      org:"S B K Higher Secondary School"
+    },
+  ],
+  contact: {
+    socials: [
+      {name:"Email",    url:"mailto:aakashb0494@gmail.com"              },
+      {name:"GitHub",   url:"https://github.com/Aakashb004"             },
+      {name:"LinkedIn", url:"https://linkedin.com/in/aakash-b-389696268"},
+      {name:"Phone",    url:"tel:+917904063522"                         },
+    ],
+  },
+  nav: [
+    {label:"About",      href:"#about"      },
+    {label:"Experience", href:"#experience" },
+    {label:"Projects",   href:"#projects"   },
+    {label:"Research",   href:"#publication"},
+    {label:"Contact",    href:"#contact"    },
+  ],
+};
+
+function render() {
+  // NAV
+  document.getElementById('navLinks').innerHTML =
+    DATA.nav.map(n=>`<li><a href="${n.href}">${n.label}</a></li>`).join('');
+  document.getElementById('mobileNav').innerHTML =
+    DATA.nav.map(n=>`<a href="${n.href}" onclick="closeMobile()">${n.label}</a>`).join('') +
+    `<div class="mobile-nav-actions">
+       <a class="nav-cta" href="resume.pdf" download style="flex:1;text-align:center;">Download CV</a>
+       <a class="nav-cta filled" href="mailto:aakashb0494@gmail.com" style="flex:1;text-align:center;">Hire Me</a>
+     </div>`;
+
+  // BADGES
+  document.getElementById('heroBadges').innerHTML =
+    DATA.badges.map(b=>`<span class="hbadge${b.active?' active':''}">${b.label}</span>`).join('');
+
+  // MARQUEE
+  const mq = [...DATA.marquee,...DATA.marquee];
+  document.getElementById('marqueeTrack').innerHTML =
+    mq.map(m=>`<span class="${m.accent?'accent':''}">${m.label}</span><span>·</span>`).join('');
+
+  // STATS
+  document.getElementById('statsGrid').innerHTML =
+    DATA.stats.map(s=>`<div class="stat-box"><div class="stat-num">${s.num}</div><div class="stat-lbl">${s.label}</div></div>`).join('');
+
+  // SKILLS
+  document.getElementById('skillsCols').innerHTML =
+    DATA.skills.map(s=>`
+      <div class="scol fade-up">
+        <div class="scol-title">${s.category}</div>
+        <div class="scol-tags">${s.tags.map(t=>`<span class="stag">${t}</span>`).join('')}</div>
+      </div>`).join('');
+
+  // SERVICES
+  document.getElementById('svcGrid').innerHTML =
+    DATA.services.map((s,i)=>`
+      <div class="svc fade-up">
+        <div class="svc-num">0${i+1}</div>
+        <div class="svc-name">${s.name}</div>
+        <div class="svc-tags">${s.tags.map(t=>`<span class="svc-tag">${t}</span>`).join('')}</div>
+      </div>`).join('');
+
+  // PROJECTS
+  document.getElementById('plist').innerHTML =
+    DATA.projects.map((p,i)=>`
+      <div class="pitem fade-up">
+        <div class="pitem-num">0${i+1}</div>
+        <div class="pitem-main">
+          <div class="pitem-title">${p.live?'<span class="live-dot"></span>':''}${p.title}</div>
+          <div class="pitem-desc">${p.desc}</div>
+          <div class="pitem-footer">
+            <div class="pitem-links">
+              ${p.liveUrl  ?`<a class="plink" href="${p.liveUrl}"   target="_blank" rel="noopener">↗ Live Demo</a>`:''}
+              ${p.githubUrl?`<a class="plink" href="${p.githubUrl}" target="_blank" rel="noopener">⌥ GitHub</a>`:''}
+            </div>
+            <div style="display:flex; align-items:center; gap:12px;">
+              ${p.metric?`<span class="metric">${p.metric}</span>`:''}
+              <div class="pitem-tags">${p.tags.map(t=>`<span class="ptag">${t}</span>`).join('')}</div>
+            </div>
+          </div>
+        </div>
+      </div>`).join('');
+
+  // EXPERIENCE
+  document.getElementById('expList').innerHTML =
+    DATA.experience.map(e=>`
+      <div class="exp-item fade-up">
+        <div>
+          <div class="exp-date">${e.date}</div>
+          <span class="exp-type">${e.type}</span>
+        </div>
+        <div>
+          <div class="exp-role">${e.role}</div>
+          <div class="exp-org">${e.org}</div>
+          <div class="exp-desc">${e.desc}</div>
+          <div class="exp-tags">${e.tags.map(t=>`<span class="exp-tag">${t}</span>`).join('')}</div>
+        </div>
+      </div>`).join('');
+
+  // CERTS
+  document.getElementById('certsList').innerHTML =
+    DATA.certifications.map(c=>`
+      <div class="cert fade-up">
+        <div class="cert-issuer">${c.issuer}</div>
+        <div class="cert-name">${c.name}</div>
+      </div>`).join('');
+
+  // PUBLICATIONS
+  document.getElementById('pubList').innerHTML =
+    DATA.publications.map(p=>`
+      <div class="pub-item fade-up">
+        <div class="pub-label">${p.label.replace(/\n/g,'<br>')}</div>
+        <div>
+          <div class="pub-title-txt">${p.title}</div>
+          <div class="pub-meta-txt">${p.meta}<br>
+            <a class="pub-link" href="${p.url}" target="_blank" rel="noopener">${p.urlLabel}</a>
+          </div>
+        </div>
+      </div>`).join('');
+
+  // EDUCATION
+  document.getElementById('eduList').innerHTML =
+    DATA.education.map(e=>`
+      <div class="edu-item fade-up">
+        <div class="edu-date">${e.date}</div>
+        <div>
+          <div class="edu-role">${e.role}</div>
+          <div class="edu-org">${e.org}</div>
+        </div>
+      </div>`).join('');
+
+  // SOCIALS
+  document.getElementById('socialList').innerHTML =
+    DATA.contact.socials.map(s=>`
+      <a class="slink" href="${s.url}" target="_blank" rel="noopener">
+        <span class="slink-name">${s.name === 'Email' ? '✉ Email' : s.name === 'GitHub' ? '⌥ GitHub' : s.name === 'LinkedIn' ? 'in LinkedIn' : s.name === 'LeetCode' ? '{} LeetCode' : '☎ Phone'}</span>
+        <span class="slink-right"><span class="slink-arr">↗</span></span>
+      </a>`).join('');
+
+  initObserver();
+}
+
+function initObserver() {
+  const obs = new IntersectionObserver(entries => {
+    entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); obs.unobserve(e.target); }});
+  }, {threshold:0.05, rootMargin:'0px 0px -20px 0px'});
+  document.querySelectorAll('.fade-up').forEach((el,i)=>{
+    el.style.transitionDelay = (i%4)*0.05+'s';
+    obs.observe(el);
+  });
+}
+
+const hbg = document.getElementById('hamburger');
+const mnv = document.getElementById('mobileNav');
+hbg.addEventListener('click',()=>{ hbg.classList.toggle('open'); mnv.classList.toggle('open'); });
+function closeMobile(){ hbg.classList.remove('open'); mnv.classList.remove('open'); }
+
+window.addEventListener('scroll',()=>{
+  const secs = document.querySelectorAll('section[id]');
+  const lnks = document.querySelectorAll('.nav-links a');
+  let cur='';
+  secs.forEach(s=>{ if(window.scrollY>=s.offsetTop-120) cur=s.id; });
+  lnks.forEach(l=>{
+    const targetId = l.getAttribute('href').replace('#', '');
+    if(targetId === 'publication' && cur === 'publication') {
+      l.classList.add('active');
+    } else {
+      l.classList.toggle('active', l.getAttribute('href')==='#'+cur);
+    }
+  });
+});
+
+document.getElementById('contactForm').addEventListener('submit', async e=>{
+  const key = e.target.access_key.value;
+  if(key==='YOUR_WEB3FORMS_KEY' || key.trim() === ''){
+    e.preventDefault();
+    const f=e.target;
+    window.location.href=`mailto:aakashb0494@gmail.com?subject=${encodeURIComponent(f.subject.value||'Portfolio Enquiry')}&body=${encodeURIComponent('Hi Aakash,\n\nName: '+f.name.value+'\nEmail: '+f.email.value+'\n\n'+f.message.value)}`;
+  } else {
+    e.preventDefault();
+    const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(e.target)});
+    if(res.ok){ e.target.reset(); const el=document.getElementById('formSuccess'); el.style.display='block'; setTimeout(()=>el.style.display='none',5000); }
+  }
+});
+
+render();
+</script>
+</body>
+</html>
