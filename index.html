@@ -238,7 +238,7 @@
   <a class="nav-logo" href="#hero">AAKASH B</a>
   <ul class="nav-links" id="navLinks"></ul>
   <div class="nav-actions">
-    <a class="nav-cta" href="resume.pdf" download>Download CV</a>
+    <a class="nav-cta" href="resume.pdf" target="_blank">View CV</a>
     <a class="nav-cta filled" href="mailto:aakashb0494@gmail.com">Hire Me</a>
     <button class="hamburger" id="hamburger" aria-label="Toggle menu"><span></span><span></span><span></span></button>
   </div>
@@ -497,7 +497,7 @@ function render() {
   document.getElementById('mobileNav').innerHTML =
     DATA.nav.map(n=>`<a href="${n.href}" onclick="closeMobile()">${n.label}</a>`).join('') +
     `<div class="mobile-nav-actions">
-       <a class="nav-cta" href="resume.pdf" download style="flex:1;text-align:center;">Download CV</a>
+       <a class="nav-cta" href="resume.pdf" target="_blank" style="flex:1;text-align:center;">View CV</a>
        <a class="nav-cta filled" href="mailto:aakashb0494@gmail.com" style="flex:1;text-align:center;">Hire Me</a>
      </div>`;
 
