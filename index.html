@@ -6,7 +6,7 @@
   <title>Aakash B — Full-Stack & AI Engineer</title>
   <meta name="description" content="Full-Stack & AI Engineer. Oracle AI Certified. IEEE Published. Open to opportunities." />
   <meta property="og:title" content="Aakash B — Full-Stack & AI Engineer" />
-  <meta property="og:description" content="Final-year B.Tech IT student building real-world web apps, IoT systems, and ML models." />
+  <meta property="og:description" content="B.Tech IT student building real-world web apps, IoT systems, and ML models." />
   <meta property="og:type" content="website" />
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="icon" href="favicon.png" type="image/png" />
@@ -34,11 +34,13 @@
     .nav-cta:hover { background:rgba(255,255,255,0.08); border-color:rgba(255,255,255,0.5); }
     .nav-cta.filled { background:var(--fg); color:var(--bg); border-color:var(--fg); }
     .nav-cta.filled:hover { opacity:0.85; }
+    
     .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
     .hamburger span { display:block; width:22px; height:1.5px; background:var(--fg); transition:all 0.3s; }
     .hamburger.open span:nth-child(1) { transform:translateY(6.5px) rotate(45deg); }
     .hamburger.open span:nth-child(2) { opacity:0; }
     .hamburger.open span:nth-child(3) { transform:translateY(-6.5px) rotate(-45deg); }
+    
     .mobile-nav { display:none; flex-direction:column; position:fixed; top:61px; left:0; right:0; background:rgba(10,10,10,0.98); backdrop-filter:blur(16px); border-bottom:0.5px solid var(--border); z-index:199; padding:1rem 0; transform:translateY(-8px); opacity:0; pointer-events:none; transition:all 0.25s ease; }
     .mobile-nav.open { transform:translateY(0); opacity:1; pointer-events:all; }
     .mobile-nav a { padding:0.9rem 2rem; font-size:13px; font-weight:500; color:var(--muted); text-decoration:none; letter-spacing:0.08em; text-transform:uppercase; border-bottom:0.5px solid rgba(255,255,255,0.05); transition:color 0.2s; }
@@ -71,7 +73,7 @@
     .sec-header { display:flex; justify-content:space-between; align-items:baseline; padding:2.5rem 3rem 1.8rem; border-bottom:0.5px solid var(--border); }
     .sec-title { font-family:'Bebas Neue',sans-serif; font-size:38px; letter-spacing:0.05em; color:var(--fg); }
 
-    /* ABOUT / EDUCATION / EXPERIENCE STRUCTURAL LISTS */
+    /* ABOUT / EDUCATION STRUCTURAL LISTS */
     .edu-list { padding:0 3rem; }
     .edu-item { display:grid; grid-template-columns:130px 1fr; gap:2rem; padding:2rem 0; border-bottom:0.5px solid rgba(255,255,255,0.07); position:relative; }
     .edu-item:last-child { border-bottom:none; }
@@ -110,7 +112,7 @@
     .pitem:hover { background:rgba(255,255,255,0.02); }
     .pitem-num { font-family:'DM Mono',monospace; font-size:12px; color:rgba(255,255,255,0.22); padding-top:3px; }
     .pitem-main { display:flex; flex-direction:column; gap:0.5rem; }
-    .pitem-title { font-size:17px; font-weight:600; color:var(--fg); display:flex; align-items:center; gap:8px; }
+    .pitem-title { font-size:17px; font-weight:600; color:var(--fg); margin-bottom:5px; display:flex; align-items:center; gap:8px; }
     .pitem-desc { font-size:13.5px; color:var(--muted); line-height:1.7; }
     .pitem-footer { display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:1rem; margin-top:0.5rem; }
     .pitem-links { display:flex; gap:8px; }
@@ -161,10 +163,11 @@
     .slink { display:flex; align-items:center; justify-content:space-between; padding:1rem 0; border-bottom:0.5px solid rgba(255,255,255,0.07); text-decoration:none; transition:opacity 0.2s; }
     .slink:last-child { border-bottom:none; }
     .slink:hover { opacity:0.65; }
-    .slink-name { font-size:14px; font-weight:500; color:var(--fg); }
+    .slink-name { font-size:14px; font-weight:500; color:var(--fg); display:flex; align-items:center; gap:10px; }
     .slink-right { display:flex; align-items:center; gap:8px; }
     .slink-handle { font-family:'DM Mono',monospace; font-size:10px; color:rgba(255,255,255,0.3); }
     .slink-arr { font-size:14px; color:rgba(255,255,255,0.25); }
+    .slink-icon { width:16px; height:16px; fill:currentColor; flex-shrink:0; }
     .cform { display:flex; flex-direction:column; gap:12px; }
     .cform input,.cform textarea { width:100%; padding:12px 16px; background:rgba(255,255,255,0.04); border:0.5px solid rgba(255,255,255,0.12); border-radius:8px; color:var(--fg); font-family:'Inter',sans-serif; font-size:13px; outline:none; transition:border-color 0.2s; }
     .cform input::placeholder,.cform textarea::placeholder { color:rgba(255,255,255,0.22); }
@@ -177,35 +180,53 @@
     footer { padding:2rem 3rem; display:flex; justify-content:center; align-items:center; border-top:0.5px solid var(--border); }
     .footer-copy { font-family:'DM Mono',monospace; font-size:11px; color:rgba(255,255,255,0.3); letter-spacing:0.08em; }
 
+    /* ── STABLE MOBILE / TABLET FIXES ── */
     @media (max-width:900px) {
       nav { padding:1rem 1.5rem; }
       .nav-links { display:none; }
       .nav-actions .nav-cta:first-child { display:none; }
       .hamburger { display:flex; }
       .mobile-nav { display:flex; }
+      
       #hero { padding:4rem 1.5rem 2rem; }
-      .hero-grid { grid-template-columns:1fr !important; gap:2rem; }
-      .hero-sub-row { flex-direction:column; align-items:flex-start; gap:1.5rem; }
+      .hero-grid { grid-template-columns:1fr !important; gap:3rem; }
+      .hero-img-wrap { order: -1; justify-content: flex-start; }
+      .hero-profile-img { width:100%; max-width:280px; height:340px; }
+      .hero-sub-row { flex-direction:column; align-items:flex-start; gap:1.5rem; margin-top:2rem; }
       .hero-badges { align-items:flex-start; }
+      
       .sec-header { padding:2rem 1.5rem 1.2rem; }
-      .stats-grid { grid-template-columns:1fr 1fr; }
-      .skills-cols { grid-template-columns:1fr; }
+      .edu-list { padding:0 1.5rem; }
+      .edu-item { grid-template-columns:1fr !important; gap:0.5rem; padding:1.5rem 0; }
+      .edu-date { text-align:left; color:var(--fg); font-weight:500; }
+      
+      .stats-grid { grid-template-columns:1fr 1fr !important; }
+      .skills-cols { grid-template-columns:1fr !important; }
       .scol { padding:1.5rem; border-right:none; border-bottom:0.5px solid var(--border); }
       .scol:last-child { border-bottom:none; }
-      .svc-grid { grid-template-columns:1fr; }
+      
+      .svc-grid { grid-template-columns:1fr !important; }
       .svc { border-right:none; padding:2rem 1.5rem; border-bottom: 0.5px solid var(--border); }
       .svc:last-child { border-bottom: none; }
-      .pitem { grid-template-columns:30px 1fr; padding:1.5rem; gap:1rem; }
-      .pitem-footer { flex-direction: column; align-items: flex-start; gap: 0.75rem; }
-      .certs-list { grid-template-columns:1fr; }
-      .cert { padding:1.5rem; border-right:none; }
+      
+      .pitem { grid-template-columns:1fr !important; gap:1rem; padding:1.5rem; }
+      .pitem-num { display:none; }
+      .pitem-footer { flex-direction:column; align-items:flex-start; gap:1rem; margin-top:0.5rem; }
+      
+      .exp-list { padding:0 1.5rem; }
+      .exp-item { grid-template-columns:1fr !important; gap:0.75rem; padding:2rem 0; }
+      
+      .certs-list { grid-template-columns:1fr !important; }
+      .cert { padding:1.5rem; border-right:none; border-bottom:0.5px solid var(--border); }
+      .cert:last-child { border-bottom:none; }
+      
       .pub-item { padding:2rem 1.5rem; flex-direction:column; gap:1rem; }
-      .exp-list,.edu-list { padding:0 1.5rem; }
-      .exp-item { grid-template-columns:1fr; gap:0.5rem; }
+      
       .contact-header { padding:2rem 1.5rem; }
-      .contact-body { grid-template-columns:1fr; }
+      .contact-body { grid-template-columns:1fr !important; }
       .contact-left { border-right:none; border-bottom:0.5px solid var(--border); padding:2rem 1.5rem; }
       .contact-right { padding:2rem 1.5rem; }
+      
       footer { padding:1.5rem; text-align:center; }
     }
   </style>
@@ -226,10 +247,10 @@
 <section id="hero">
   <div class="hero-grid">
     <div>
-      <div class="hero-meta mt-1 fade-up"><span>/ FULL-STACK &amp; AI ENGINEER</span></div>
+      <div class="hero-meta高速 fade-up"><span>/ FULL-STACK &amp; AI ENGINEER</span></div>
       <div class="hero-title">AAKASH<br><span class="dim">BUILDING</span><br>REAL<span class="dim">-WORLD</span></div>
       <div class="hero-sub-row">
-        <p class="hero-desc">B.Tech Information Technology student at Kalasalingam University. Oracle Cloud AI Certified and IEEE-published researcher specializing in full-stack engineering, production web apps, and intelligent IoT systems.</p>
+        <p class="hero-desc">B.Tech Information Technology Student at Kalasalingam University completing studies in 2026. Oracle Cloud AI Certified and IEEE-published researcher specializing in full-stack engineering, production web apps, and intelligent IoT systems.</p>
         <div class="hero-badges" id="heroBadges"></div>
       </div>
     </div>
@@ -439,7 +460,7 @@ const DATA = {
   ],
   education: [
     {
-      date:"2022 – Present",
+      date:"2022 – 2026",
       role:"B.Tech — Information Technology",
       org:"Kalasalingam Academy of Research and Education"
     },
@@ -451,10 +472,10 @@ const DATA = {
   ],
   contact: {
     socials: [
-      {name:"Email",    url:"mailto:aakashb0494@gmail.com"              },
-      {name:"GitHub",   url:"https://github.com/Aakashb004"             },
-      {name:"LinkedIn", url:"https://linkedin.com/in/aakash-b-389696268"},
-      {name:"Phone",    url:"tel:+917904063522"                         },
+      {name:"Email",    icon:`<span class="slink-icon-text">✉</span>`, url:"mailto:aakashb0494@gmail.com"              },
+      {name:"GitHub",   icon:`<svg class="slink-icon" viewBox="0 0 24 24"><path d="M12 .297c-6.63 0-12 5.373-12 12 0 5.303 3.438 9.8 8.205 11.385.6.113.82-.258.82-.577 0-.285-.01-1.04-.015-2.04-3.338.724-4.042-1.61-4.042-1.61C4.422 18.07 3.633 17.7 3.633 17.7c-1.087-.744.084-.729.084-.729 1.205.084 1.838 1.236 1.838 1.236 1.07 1.835 2.809 1.305 3.495.998.108-.776.417-1.305.76-1.605-2.665-.3-5.466-1.332-5.466-5.93 0-1.31.465-2.38 1.235-3.22-.135-.303-.54-1.523.105-3.176 0 0 1.005-.322 3.3 1.23.96-.267 1.98-.399 3-.405 1.02.006 2.04.138 3 .405 2.28-1.552 3.285-1.23 3.285-1.23.645 1.653.24 2.873.12 3.176.765.84 1.23 1.91 1.23 3.22 0 4.61-2.805 5.625-5.475 5.92.42.36.81 1.096.81 2.22 0 1.606-.015 2.896-.015 3.286 0 .315.21.69.825.57C20.565 22.092 24 17.592 24 12.297c0-6.627-5.373-12-12-12"/></svg>`, url:"https://github.com/Aakashb004" },
+      {name:"LinkedIn", icon:`<span class="slink-icon-text">in</span>`, url:"https://linkedin.com/in/aakash-b-389696268"},
+      {name:"Phone",    icon:`<span class="slink-icon-text">☎</span>`, url:"tel:+917904063522"                         },
     ],
   },
   nav: [
@@ -580,7 +601,7 @@ function render() {
   document.getElementById('socialList').innerHTML =
     DATA.contact.socials.map(s=>`
       <a class="slink" href="${s.url}" target="_blank" rel="noopener">
-        <span class="slink-name">${s.name === 'Email' ? '✉ Email' : s.name === 'GitHub' ? '⌥ GitHub' : s.name === 'LinkedIn' ? 'in LinkedIn' : s.name === 'LeetCode' ? '{} LeetCode' : '☎ Phone'}</span>
+        <span class="slink-name">${s.icon} ${s.name}</span>
         <span class="slink-right"><span class="slink-arr">↗</span></span>
       </a>`).join('');
 
@@ -622,7 +643,7 @@ document.getElementById('contactForm').addEventListener('submit', async e=>{
   if(key==='YOUR_WEB3FORMS_KEY' || key.trim() === ''){
     e.preventDefault();
     const f=e.target;
-    window.location.href=`mailto:aakashb0494@gmail.com?subject=${encodeURIComponent(f.subject.value||'Portfolio Enquiry')}&body=${encodeURIComponent('Hi Aakash,\n\nName: '+f.name.value+'\nEmail: '+f.email.value+'\n\n'+f.message.value)}`;
+    window.location.href=`mailto:aakashb0494@gmail.com?subject=${encodeURIComponent(f.subject.value||'Portfolio Enquiry')}&body=${encodeURIComponent('Hi Aakash,\\n\\nName: '+f.name.value+'\nEmail: '+f.email.value+'\n\n'+f.message.value)}`;
   } else {
     e.preventDefault();
     const res=await fetch('https://api.web3forms.com/submit',{method:'POST',body:new FormData(e.target)});
